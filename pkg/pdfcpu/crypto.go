@@ -535,7 +535,7 @@ func supportedCFEntry(d Dict) (bool, error) {
 
 	l := d.IntEntry("Length")
 	if l != nil && (*l < 5 || *l > 16) && *l != 32 {
-		return false, errors.New("pdfcpu: supportedCFEntry: invalid entry \"Length\"")
+    return false, errors.New(fmt.Sprintf("pdfcpu: supportedCFEntry: invalid entry \"Length\": %d", l))
 	}
 
 	return cfm != nil && (*cfm == "AESV2" || *cfm == "AESV3"), nil
